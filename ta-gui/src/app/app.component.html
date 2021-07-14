@@ -20,17 +20,12 @@
    <td><label>e-mail </label></td>
    <td><input [(ngModel)]="aluno.email" ></td>
 </tr>
-<tr>
-      <td><label>login do GITHub</label></td>
-      <td><input [(ngModel)]="aluno.login"></td>
-</tr>
 </table>
 
 <ul>
 <li *ngFor="let a of alunos">
     <span>{{a.nome}}</span>,
     <span>{{a.cpf}}</span>,
-    <span>{{a.email}}</span>,
-    <span>{{a.login}}</span>
+    <span>{{a.email}}</span>
 </li>
 </ul>
