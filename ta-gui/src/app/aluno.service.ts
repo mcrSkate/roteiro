@@ -8,6 +8,7 @@ import { Aluno } from '../../../common/aluno';
 @Injectable()
 export class AlunoService {
 
+
   private headers = new HttpHeaders({'Content-Type': 'application/json'});
   private taURL = 'http://localhost:3000';
 
@@ -22,7 +23,8 @@ export class AlunoService {
   }
 
   atualizar(aluno: Aluno): Observable<Aluno> {
-    return this.http.put<any>(this.taURL + "/aluno",JSON.stringify(aluno), {headers: this.headers})          .pipe( 
+    return this.http.put<any>(this.taURL + "/aluno",JSON.stringify(aluno), {headers: this.headers})          
+              .pipe( 
                 retry(2),
                 map( res => {if (res.success) {return aluno;} else {return null;}} )
               ); 
