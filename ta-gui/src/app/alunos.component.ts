@@ -12,6 +12,7 @@ import { AlunoService } from './aluno.service';
     aluno: Aluno = new Aluno();
     alunos: Aluno[] = [];
     duplicado: boolean = false;
+    inexistente: boolean = false;
 
     constructor(private alunoService: AlunoService) {}
 
@@ -29,6 +30,23 @@ import { AlunoService } from './aluno.service';
                 msg => { alert(msg.message); }
               );
     } 
+
+    removerAluno(cpf: string){
+      this.alunoService.remover(cpf)
+              .subscribe(
+                ar =>{
+                    var index = this.alunos.findIndex(a => a.cpf = cpf);
+                    if(index != -1){
+                      this.alunos.splice(index,1);
+                    }
+                },
+                msg => { alert(msg.message); }
+              );
+
+
+
+    }
+
 
     onMove(): void {
        this.duplicado = false;
